@@ -1,14 +1,19 @@
-import React from 'react'
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
 
 const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+
     return (
         <>
             <div>
                 <nav className="bg-neutral-primary  w-full z-20 top-0 start-0 border-b border-default">
                     <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                        <a
+                        <Link
                             href="/"
+                            onClick={() => setIsMenuOpen(false)}
                             className="flex items-center space-x-3 rtl:space-x-reverse"
                         >
                             <img
@@ -19,13 +24,13 @@ const Header = () => {
                             <span className="self-center text-xl text-heading font-semibold whitespace-nowrap">
                                 Flowbite
                             </span>
-                        </a>
+                        </Link>
                         <button
-                            data-collapse-toggle="navbar-default"
                             type="button"
+                            onClick={() => setIsMenuOpen((isOpen) => !isOpen)}
                             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-body rounded-base md:hidden hover:bg-neutral-secondary-soft hover:text-heading focus:outline-none focus:ring-2 focus:ring-neutral-tertiary"
                             aria-controls="navbar-default"
-                            aria-expanded="false"
+                            aria-expanded={isMenuOpen}
                         >
                             <span className="sr-only">Open main menu</span>
                             <svg
@@ -45,11 +50,15 @@ const Header = () => {
                                 />
                             </svg>
                         </button>
-                        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
+                        <div
+                            className={`${isMenuOpen ? 'block' : 'hidden'} w-full md:block md:w-auto`}
+                            id="navbar-default"
+                        >
                             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border border-default rounded-base bg-neutral-secondary-soft md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-neutral-primary">
                                 <li>
                                     <Link
                                         href="/"
+                                        onClick={() => setIsMenuOpen(false)}
                                         className="block py-2 px-3 text-black bg-brand rounded md:bg-transparent md:text-fg-brand md:p-0"
                                         aria-current="page"
                                     >
@@ -59,6 +68,7 @@ const Header = () => {
                                 <li>
                                     <Link
                                         href="/about-us"
+                                        onClick={() => setIsMenuOpen(false)}
                                         className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
                                     >
                                         About
@@ -67,6 +77,7 @@ const Header = () => {
                                 <li>
                                     <a
                                         href="#"
+                                        onClick={() => setIsMenuOpen(false)}
                                         className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
                                     >
                                         Services
@@ -75,14 +86,25 @@ const Header = () => {
                                 <li>
                                     <Link
                                         href="/product"
+                                        onClick={() => setIsMenuOpen(false)}
                                         className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
                                     >
                                         Product
                                     </Link>
                                 </li>
                                 <li>
+                                    <Link
+                                        href={'/server-side'}
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
+                                    >
+                                        Server Product
+                                    </Link>
+                                </li>
+                                <li>
                                     <a
                                         href="#"
+                                        onClick={() => setIsMenuOpen(false)}
                                         className="block py-2 px-3 text-heading rounded hover:bg-neutral-tertiary md:hover:bg-transparent md:border-0 md:hover:text-fg-brand md:p-0 md:dark:hover:bg-transparent"
                                     >
                                         Contact

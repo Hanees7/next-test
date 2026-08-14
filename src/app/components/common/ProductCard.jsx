@@ -1,16 +1,24 @@
+import Link from 'next/link'
 import React from 'react'
+import { products } from '../../data/products'
 
-const ProductCard = () => {
+const ProductCard = ({ product = products[1] }) => {
     return (
-        <>
-            <figure className='bg-white rounded-lg shadow-md p-4'>
-                <img src="https://res.cloudinary.com/diwgt4zc8/image/upload/f_auto,q_auto/v1/elan-group/aces" alt="img" />
-                <h3 className='text-2xl py-3'>Product 1</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam recusandae similique, cumque quos optio culpa cupiditate labore molestiae eveniet eum officia perspiciatis atque quas facere ratione inventore laborum, incidunt dolore.</p>
-                <button className='bg-amber-400 text-white px-4 py-2 rounded'>Read More</button>
-            </figure>
-        </>
-    )
-}
+            <>
+                        <figure className='bg-white rounded-lg shadow-md p-4'>
+                                        <img src={product.image} alt={product.title} />
+                                                        <h3 className='text-2xl py-3'>{product.title}</h3>
+                                                                        <p>{product.summary}</p>
+                                                                                        <Link
+                                                                                                            href={`/server-side/${product.id}`}
+                                                                                                                                className='mt-4 inline-block bg-amber-400 text-white px-4 py-2 rounded'
+                                                                                                                                                >
+                                                                                                                                                                    Read More
+                                                                                                                                                                                    </Link>
+                                                                                                                                                                                                </figure>
+                                                                                                                                                                                                        </>
+                                                                                                                                                                                                            )
+                                                                                                                                                                                                            }
 
-export default ProductCard
+                                                                                                                                                                                                            export default ProductCard
+                                                                                                                                                                                                            

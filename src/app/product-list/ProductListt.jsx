@@ -1,17 +1,11 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import ProductCard from '../components/common/ProductCard'
-import { products } from '../data/products'
-import { devDelay } from '../utils/devDelay'
 
-const page = async () => {
-    await devDelay()
-
+const ProductListt = ({ data }) => {
+    const [products, setProducts] = useState(data)
     return (
         <>
-            <div>
-                <h1 className='text-2xl py-10 font-bold text-center'>Product Page</h1>
-            </div>
-
             <div className='max-w-[1320px]  mx-auto m-10'>
                 <div className='grid grid-cols-4 gap-4'>
                     {products.map((product) => (
@@ -19,10 +13,8 @@ const page = async () => {
                     ))}
                 </div>
             </div>
-
-
         </>
     )
 }
 
-export default page
+export default ProductListt
